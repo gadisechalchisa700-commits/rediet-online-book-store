@@ -1,0 +1,16 @@
+
+# Private environment variables
+.env
+backend/.env
+backend/.env.*
+
+# Dependencies
+node_modules/
+backend/node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Local configuration
+.DS_Store
