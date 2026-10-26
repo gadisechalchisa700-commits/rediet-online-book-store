@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse and order books from Rediet Online Book Store.">
+  <title>Rediet Online Book Store</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Rediet Online Book Store home">Rediet <span>Books</span> 📚</a>
+    <nav aria-label="Main navigation">
+      <a href="#books">Books</a>
+      <a href="#cart">My Cart <span class="nav-count" id="cart-count">0</span></a>
+      <a href="#checkout">Checkout</a>
+      <a href="#order-history-section">Orders</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <p class="eyebrow">YOUR NEXT CHAPTER STARTS HERE</p>
+        <h1>Find a book.<br><span>Discover a world.</span></h1>
+        <p class="hero-description">Explore books that help you learn, grow, and build your future.</p>
+        <button class="button button-light" id="welcome-button" type="button">Explore Books <span aria-hidden="true">→</span></button>
+        <p id="message" class="hero-message" aria-live="polite"></p>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="book book-one"><span>LEARN</span><strong>JavaScript</strong><small>Build your future</small></div>
+        <div class="book book-two"><span>GROW</span><strong>Good Habits</strong><small>One day at a time</small></div>
+        <div class="book book-three"><span>CREATE</span><strong>New Ideas</strong><small>Start today</small></div>
+      </div>
+    </section>
+
+    <section class="section" id="books">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">THE BOOKSHELF</p>
+          <h2>Find your next read</h2>
+          <p class="muted">Choose a book that matches your goals.</p>
+        </div>
+        <span class="shelf-icon" aria-hidden="true">📖</span>
+      </div>
+
+      <div class="book-controls">
+        <label class="search-wrap">
+          <span class="sr-only">Search books</span>
+          <span aria-hidden="true">⌕</span>
+          <input id="search-input" type="search" placeholder="Search by title or author..." autocomplete="off">
+        </label>
+        <label class="filter-wrap">
+          <span class="sr-only">Filter by category</span>
+          <select id="category-filter">
+            <option value="all">All categories</option>
+            <option value="Programming">Programming</option>
+            <option value="Education">Education</option>
+            <option value="Business">Business</option>
+            <option value="Self-Development">Self-Development</option>
+          </select>
+        </label>
+      </div>
+      
+<p class="results-message" id="results-message" aria-live="polite"></p>
+
+<div class="book-grid" id="book-list"></div>
+
+<div class="add-book-panel">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">GROW THE BOOKSHELF</p>
+      <h2>Add a new book</h2>
+      <p class="muted">Save a new book to your bookstore database.</p>
+    </div>
+    <span class="shelf-icon" aria-hidden="true">➕</span>
+  </div>
+
+  <form id="add-book-form" class="checkout-form" novalidate>
+    <label for="new-book-title">Book title</label>
+    <input id="new-book-title" type="text" required
+      placeholder="Enter book title">
+
+    <label for="new-book-author">Author</label>
+    <input id="new-book-author" type="text" required
+      placeholder="Enter author name">
+
+    <label for="new-book-price">Price (ETB)</label>
+    <input id="new-book-price" type="number" min="0" step="0.01"
+      required placeholder="Enter price">
+
+    <label for="new-book-category">Category</label>
+    <select id="new-book-category" required>
+      <option value="">Choose a category</option>
+      <option value="Programming">Programming</option>
+      <option value="Education">Education</option>
+      <option value="Business">Business</option>
+      <option value="Self-Development">Self-Development</option>
+    </select>
+
+    <label for="new-book-description">Description (optional)</label>
+    <textarea id="new-book-description" rows="3"
+      placeholder="Describe the book"></textarea>
+
+    <p id="add-book-message" class="form-message" aria-live="polite"></p>
+
+    <button class="button button-primary button-full" type="submit">
+      Save book
+    </button>
+  </form>
+</div>
+
+    </section>
+
+    <section class="section cart-section" id="cart">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">YOUR SELECTION</p>
+          <h2>Shopping cart <span class="heading-count" id="cart-heading-count">0 items</span></h2>
+          <p class="muted">Review your books before checkout.</p>
+        </div>
+        <span class="shelf-icon" aria-hidden="true">🛒</span>
+      </div>
+      <div class="cart-panel">
+        <div id="cart-items" class="cart-items"></div>
+        <div class="cart-summary">
+          <span>Total</span>
+          <strong id="cart-total">0 ETB</strong>
+        </div>
+        <div class="cart-actions">
+          <button class="button button-secondary" id="back-to-books-button" type="button">Continue shopping</button>
+          <button class="button button-danger-outline" id="clear-cart-button" type="button">Clear cart</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section checkout-section" id="checkout">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">ALMOST THERE</p>
+          <h2>Checkout</h2>
+          <p class="muted">Enter your contact details to review your demo order.</p>
+        </div>
+        <span class="shelf-icon" aria-hidden="true">🧾</span>
+      </div>
+      <div class="checkout-layout">
+        <form id="checkout-form" class="checkout-form" novalidate>
+          <label for="customer-name">Full name</label>
+          <input id="customer-name" name="customerName" type="text" autocomplete="name" placeholder="Enter your full name" required>
+
+          <label for="customer-phone">Phone number</label>
+          <input id="customer-phone" name="customerPhone" type="tel" autocomplete="tel" placeholder="Enter your phone number" required>
+
+          <label for="customer-address">Delivery address</label>
+          <textarea id="customer-address" name="customerAddress" rows="3" autocomplete="street-address" placeholder="Enter your delivery address" required></textarea>
+
+          <p id="order-message" class="form-message" aria-live="polite"></p>
+          <button class="button button-primary button-full" id="confirm-order-button" type="submit">Review order</button>
+        </form>
+        <aside class="checkout-note">
+          <span class="note-icon">💡</span>
+          <h3>Before you order</h3>
+          <p>This is a learning project. It does not collect payment or send your order to a real shop.</p>
+          <p>Your order review will appear here after you submit the form.</p>
+          <div id="confirmation-message" class="confirmation-message" aria-live="polite"></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section history-section" id="order-history-section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">YOUR ACTIVITY</p>
+          <h2>Order history</h2>
+          <p class="muted">Demo orders saved in this browser.</p>
+        </div>
+        <span class="shelf-icon" aria-hidden="true">📋</span>
+      </div>
+      <div id="order-history" class="order-history"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="#home">Rediet <span>Books</span> 📚</a>
+    <p>Read more. Learn more. Become more.</p>
+    <small>© 2026 Rediet Online Book Store · Learning project</small>
+  </footer>
+</body>
+</html>
