@@ -50,7 +50,7 @@ async function loadBooks() {
   try {
     resultsMessage.textContent = "Loading books...";
 
-    const response = await fetch("https://rediet-online-book-store.onrender.com/api/books")
+    const response = await fetch("https://rediet-online-book-store.onrender.com/api/books");
 
     if (!response.ok) {
       throw new Error("Could not load books from the server.");
